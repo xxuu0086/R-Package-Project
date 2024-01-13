@@ -1,0 +1,67 @@
+---
+title: "Guide to explosbuck"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Guide to explosbuck}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(explosbuck)
+```
+
+# Description
+
+explosbuck is a package using for explore the Starbucks coffee chain data set, it also provides the calculation of the total and difference of number of coffeehouses for a particular country or countries. 
+
+This package has 4 build-in data sets which are named as **starbucks**, **tim_hortons**, **dunkin_donuts** and **ISOcode**, and this package is mainly focused on data set **starbucks**. All data set are come from or derived from [tidytuesday](https://github.com/rfordatascience/tidytuesday/blob/master/data/2018/2018-05-07/week6_coffee_chains.xlsx).
+
+This vignette provides examples on how to use functions of package _explosbuck_ to perform: 
+
+- Calculation of total number of Starbucks coffeehouses for a country.
+- Calculation of difference in number of Starbucks coffeehouses between two countries.
+- Visualization of total number of Starbucks coffeehouses in various countries.
+
+
+## Example of the Package
+
+```{r}
+library(knitr)
+```
+
+### 1. count_sbuck
+
+To count total number of Starbucks coffeehouses in Australia:
+
+```{r}
+# Use ISOcode to find the code for Australia is AU
+# filter(ISOcode, Country == "Australia")
+count_sbuck(code = "AU") %>%
+  kable()
+```
+
+### 2. diff_sbuck
+
+To see difference in total number of Starbucks coffeehouses between Australia and United States:
+
+```{r}
+diff_sbuck(code1 = "AU", code2 = "US") %>%
+  kable()
+```
+
+### 3. plot_sbuck
+
+A plot to compare the total number of coffeehouses for Australia, China and Canada:
+
+```{r out.width = "70%", out.height="70%", fig.align = 'center'}
+plot_sbuck(code = c("AU", "CN", "CA"))
+```
+
