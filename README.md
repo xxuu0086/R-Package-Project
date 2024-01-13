@@ -9,16 +9,16 @@
 The goal of explosbuck is to explore the Starbucks coffeehouses data and
 compare the coffeehouses in countries.
 
-<https://etc5523-2022.github.io/rpkg-xxuu0086/>
+<https://github.com/xxuu0086/R-Package-Project>
 
 ## Installation
 
 You can install the development version of explosbuck from
-[GitHub](https://github.com/etc5523-2022/rpkg-xxuu0086) with:
+[GitHub](https://github.com/xxuu0086/R-Package-Project) with:
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("etc5523-2022/rpkg-xxuu0086/explosbuck")
+devtools::install_github("xxuu0086/explosbuck")
 ```
 
 ## Usage
