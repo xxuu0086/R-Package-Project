@@ -1,0 +1,246 @@
+---
+title: "Instructions for explosbuck package"
+author: "Xianghe XU"
+email: "xxuu0086@monash.student.edu"
+department: "Department of Econometrics and Business Statistics"
+footer: "Package : explosbuck"
+format: 
+  revealjs:
+    transition: concave
+    logo: Image/monash-university-vector-logo.png
+    theme: league
+    center: true
+---
+
+```{r setup, include = FALSE}
+library(explosbuck)
+library(tidyverse)
+library(kableExtra)
+library(knitr)
+
+knitr::opts_chunk$set(
+  echo = TRUE,
+  eval = TRUE,
+  message = FALSE, 
+  warning = FALSE, 
+  error = FALSE,  
+  out.width = "70%",
+  fig.width = 8, 
+  fig.height = 6,
+  fig.align = 'center',
+  fig.retina = 3)
+```
+
+## Aim & Motivation
+
+. . .
+
+- Explore Starbucks data
+
+. . .
+
+- Calculate __Total__ and __Difference__ of coffeehouses
+
+. . . 
+
+- Compare number of coffeehouses between countries
+
+## Installation
+
+- How to install package explosbuck ?
+
+. . . 
+
+[https://github.com/etc5523-2022/rpkg-xxuu0086](https://github.com/etc5523-2022/rpkg-xxuu0086)
+
+<br>
+
+``` r
+# install.packages("devtools")
+devtools::install_github("etc5523-2022/rpkg-xxuu0086/explosbuck")
+```
+
+<br>
+
+. . . 
+
+<center> __Simple !__ <center>
+
+. . . 
+
+## Data & Function
+
+. . . 
+
+### Data
+
+- __starbucks__
+
+- ISOcode, tim_hortons, dunkin_donuts
+
+. . . 
+
+### Functions
+
+- count_sbuck()
+
+- diff_sbuck()
+
+- plot_sbuck() (Shiny-parameterized function)
+
+- run_app() (launch Shiny app)
+
+. . . 
+
+## Data : starbucks
+
+- A data frame with 25600 rows and 13 variables.
+
+```{r}
+dim(starbucks) 
+```
+
+. . . 
+
+- __Business related__ and __geographical__ information.
+
+```{r}
+names(starbucks) 
+```
+
+. . . 
+
+## Data : ISOcode
+
+- A two letter combination country code & country name 
+
+- Complementary data to the use of functions
+
+
+```{r}
+head(ISOcode, 2) %>%
+  kable() %>%
+  kable_material()
+```
+
+
+## Function : count_sbuck()
+
+- Count the total number of Starbucks coffeehouses.
+
+```{r eval = FALSE}
+count_sbuck(code)
+```
+
+<br>
+
+. . . 
+
+### Example :
+
+```{r}
+Australia <- filter(ISOcode, Country == "Australia")[1,1]
+count_sbuck(code = Australia) %>%
+  kable() 
+```
+
+. . . 
+
+## Function : diff_sbuck()
+
+- Calculate the difference in number of coffeehouses of two countries
+
+```{r eval = FALSE}
+diff_sbuck(code1, code2)
+```
+
+<br>
+
+. . . 
+
+### Example :
+
+```{r}
+Australia <- filter(ISOcode, Country == "Australia")[1,1]
+China <- filter(ISOcode, Country == "China")[1,1]
+diff_sbuck(code1 = Australia, code2 = China) 
+```
+
+. . . 
+
+## Function : plot_sbuck()
+- Shiny-parameterized function
+
+- A plot to compare total coffeehouses in countries
+
+```{r eval = FALSE}
+plot_sbuck(code)
+```
+
+<br>
+
+
+
+### Example :
+
+```{r eval = FALSE}
+Australia <- filter(ISOcode, Country == "Australia")[1,1]
+China <- filter(ISOcode, Country == "China")[1,1]
+Canada <- filter(ISOcode, Country == "Canada")[1,1]
+
+plot_sbuck(code = c(Australia, China, Canada)) 
+```
+
+## Continue . .  
+
+```{r eval = FALSE}
+plot_sbuck(code = c(Australia, China, Canada)) 
+```
+
+. . . 
+
+Alternatively
+
+. . . 
+
+```{r out.width = "60%"}
+plot_sbuck(code = c("AU", "CN", "CA")) 
+```
+
+. . . 
+
+## Continue . . 
+
+Australia, China, Canada, 
+
+. . . 
+
+United States
+
+. . . 
+
+```{r out.width = "60%"}
+plot_sbuck(code = c("AU", "CN", "CA", "US")) 
+```
+
+## Function : run_app()
+
+- Launch Shiny app 
+
+``` r 
+run_app()
+```
+
+<br>
+
+## More 
+
+### Shiny app site :
+
+- [https://kmmcvr-xianghe-xu.shinyapps.io/global-coffee-chain-xxuu0086/](https://kmmcvr-xianghe-xu.shinyapps.io/global-coffee-chain-xxuu0086/)
+
+### Blog :
+
+- [https://xxuu0086.quarto.pub/global-coffee-chain/](https://xxuu0086.quarto.pub/global-coffee-chain/)
+
+# Thank you!
