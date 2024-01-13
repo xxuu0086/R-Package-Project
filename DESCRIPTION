@@ -1,0 +1,35 @@
+Package: explosbuck
+Title: Starbucks Coffeehouses Business and Geographical Data
+Version: 1.0.0
+Authors@R: 
+    person("Xianghe", "Xu", , "xxuu0086@student.monash.edu", role = c("aut", "cre"))
+Description: An algorithm to explore Starbucks coffeehouses data .
+License: MIT + file LICENSE
+URL: https://github.com/etc5523-2022/rpkg-xxuu0086, https://etc5523-2022.github.io/rpkg-xxuu0086/
+BugReports: https://github.com/etc5523-2022/rpkg-xxuu0086/issues
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.1
+Suggests: 
+    bslib,
+    DT,
+    knitr,
+    leaflet,
+    maps,
+    markdown,
+    rmarkdown,
+    shiny,
+    shinythemes,
+    shinyWidgets,
+    testthat (>= 3.0.0),
+    tidyverse
+Config/testthat/edition: 3
+LazyData: true
+Imports: 
+    dplyr,
+    ggplot2,
+    janitor,
+    magrittr
+VignetteBuilder: knitr
+Depends: 
+    R (>= 2.10)

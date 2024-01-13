@@ -1,0 +1,81 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# explosbuck
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+The goal of explosbuck is to explore the Starbucks coffeehouses data and compare the
+coffeehouses in countries. 
+
+https://etc5523-2022.github.io/rpkg-xxuu0086/
+
+## Installation
+
+You can install the development version of explosbuck from [GitHub](https://github.com/etc5523-2022/rpkg-xxuu0086) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("etc5523-2022/rpkg-xxuu0086/explosbuck")
+```
+
+## Usage
+
+```{r}
+library(explosbuck)
+```
+
+## Examples
+```{r}
+library(knitr)
+```
+
+
+To access Starbucks data, for first six rows:
+
+```{r}
+head(starbucks) %>%
+  kable()
+```
+
+To find two letter combination country code, for first six rows:
+
+```{r}
+head(ISOcode) %>%
+  kable()
+```
+
+To count total number of Starbucks coffeehouses in Australia:
+
+```{r}
+# Use ISOcode to find the code for Australia is AU
+# filter(ISOcode, Country == "Australia")
+count_sbuck(code = "AU") %>%
+  kable()
+```
+
+To see difference in total number of Starbucks coffeehouses between Australia and United States:
+
+```{r}
+diff_sbuck(code1 = "AU", code2 = "US") %>%
+  kable()
+```
+
+A plot to compare the total number of coffeehouses for Australia, United States and Canada:
+
+```{r out.width = "70%", out.height="70%", fig.align = 'center'}
+plot_sbuck(code = c("AU", "US", "CA"))
+```
